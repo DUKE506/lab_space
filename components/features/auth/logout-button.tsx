@@ -14,8 +14,11 @@ export function LogoutButton() {
     }
   };
   return (
-    <button onClick={handleLogout} className="">
-      로그아웃
+    <button
+      onClick={handleLogout}
+      className="border border-(--border) py-1 rounded-(--default-rounded) text-xs hover:text-red-600 hover:border-red-600 cursor-pointer"
+    >
+      LOGOUT
     </button>
   );
 }

@@ -9,10 +9,12 @@ export default function SignInLayout({
 }) {
   return (
     <SessionProvider>
-      <div className="relative h-full">
-        <ProfileBox />
+      <div className="h-full px-12 relative">
+        <div className="flex pt-6 justify-end">
+          <ProfileBox />
+        </div>
+
         {children}
-        <DarkModeButton />
       </div>
     </SessionProvider>
   );

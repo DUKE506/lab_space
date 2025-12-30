@@ -6,6 +6,7 @@
   --foreground: #171717;
   --border: #d3d3d3;
   --default-rounded: 2px;
+  --primary: #d15b1b;
 }
 
 [data-theme="dark"] {
@@ -29,6 +30,7 @@
 
 html {
   height: 100%;
+  line-height: 1.5;
 }
 
 body {

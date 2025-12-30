@@ -11,13 +11,15 @@ export function ProfileBox() {
   }, [session]);
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="w-10 h-10 flex items-center justify-center aspect-square rounded-full border-2 border-(--border) ">
-        <User />
-      </div>
-      <div className="flex flex-col">
-        <span>{session?.user.name}</span>
-        <span>{session?.user.email}</span>
+    <div className="w-fit flex flex-col gap-2 border border-(--border) p-4 rounded-(--default-rounded)">
+      <div className="flex items-center gap-2 ">
+        <div className="w-12 h-12 flex items-center justify-center aspect-square rounded-full border border-(--border)">
+          <User strokeWidth={1} />
+        </div>
+        <div className="flex flex-col">
+          <span className="text-sm">{session?.user.name}</span>
+          <span className="text-xs">{session?.user.email}</span>
+        </div>
       </div>
       <LogoutButton />
     </div>
