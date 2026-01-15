@@ -2,11 +2,23 @@
 
 :root {
   /*기본 테마 색상*/
-  --background: #ffffff;
-  --foreground: #171717;
-  --border: #d3d3d3;
-  --default-rounded: 2px;
-  --primary: #d15b1b;
+  --background: #f8fafc;
+  --surface: #ffffff;
+
+  --primary: #2563eb;
+  --secondary: #1e40af;
+  --accent: #3b82f6;
+  --hover: #eff6ff;
+
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-light: #94a3b8;
+
+  --border: #e2e8f0;
+
+  --success: #10b981;
+  --wraning: #ef4444;
+  --warning: #f59e0b;
 }
 
 [data-theme="dark"] {

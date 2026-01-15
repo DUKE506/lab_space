@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Noto_Sans_KR } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { DarkModeButton } from "@/components/features/theme/darkmode-button";
+import SideBar from "@/components/ui/side-bar/side-bar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${notoSansKr.variable}   antialiased relative `} suppressHydrationWarning>
+      <body
+        className={`${notoSansKr.variable}   antialiased relative `}
+        suppressHydrationWarning
+      >
         <ThemeProvider>
+          <SideBar />
           {children}
           <DarkModeButton />
         </ThemeProvider>
