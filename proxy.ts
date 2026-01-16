@@ -1,7 +1,4 @@
-import { auth } from "./auth";
-
 export async function proxy(request: Request) {
-  const session = await auth();
   const url = new URL(request.url);
   const pathname = url.pathname;
 

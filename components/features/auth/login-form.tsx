@@ -1,4 +1,3 @@
-import { signIn } from "@/auth";
 import { Input } from "@/components/ui/input";
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
@@ -10,10 +9,10 @@ export default function LoginForm() {
       action={async (formData) => {
         "use server";
         try {
-          const res = await signIn("credentials", {
-            ...Object.fromEntries(formData),
-            redirect: false,
-          });
+          // const res = await signIn("credentials", {
+          //   ...Object.fromEntries(formData),
+          //   redirect: false,
+          // });
 
           redirect("/dashboard");
         } catch (err) {

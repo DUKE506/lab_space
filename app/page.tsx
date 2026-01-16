@@ -19,7 +19,7 @@ export default function Home() {
 }
 
 const MainTitle = () => {
-  return <div className="text-7xl">DUKE's BOILERPLATE</div>;
+  return <div className="text-7xl">LAB SPACE</div>;
 };
 
 const Description = ({ desc }: { desc: string }) => {

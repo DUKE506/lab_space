@@ -1,21 +1,20 @@
-import { DarkModeButton } from "@/components/features/theme/darkmode-button";
-import { ProfileBox } from "@/components/features/user/profile-box";
-import { SessionProvider } from "next-auth/react";
+import ContentsLayout from "@/components/layout/contents-layout";
+import SideBar from "@/components/ui/side-bar/side-bar";
+import TopNav from "@/components/ui/top-nav/top-nav";
+import React from "react";
 
-export default function SignInLayout({
+export default function UserLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <SessionProvider>
-      <div className="h-full px-12 relative">
-        <div className="flex pt-6 justify-end">
-          <ProfileBox />
-        </div>
-
-        {children}
+    <div className="w-full h-full flex">
+      <SideBar />
+      <div className="flex flex-col bg-background w-full px-8 overflow-y-auto">
+        <TopNav />
+        <ContentsLayout>{children}</ContentsLayout>
       </div>
-    </SessionProvider>
+    </div>
   );
 }
