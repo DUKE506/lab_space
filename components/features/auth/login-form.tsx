@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { KakaoLoginButton } from "./oauth-button";
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -46,6 +47,7 @@ export default function LoginForm() {
       >
         sign in
       </button>
+      <KakaoLoginButton />
     </form>
   );
 }
