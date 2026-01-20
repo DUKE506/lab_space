@@ -26,7 +26,6 @@ export default function LoginForm() {
 
   const onSubmit = async (values: LoginDto) => {
     const data = await signIn(values);
-    console.log(data);
   };
   return (
     <form
