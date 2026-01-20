@@ -11,6 +11,7 @@ interface AuthState {
 
   signIn: (data: LoginDto) => Promise<void>;
   signOut: () => Promise<void>;
+  setUser: (user: User) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -38,6 +39,7 @@ export const useAuthStore = create<AuthState>()(
           }
         },
         signOut: async () => {},
+        setUser: (user) => set({ user }),
       }),
       { name: "auth-store" },
     ),

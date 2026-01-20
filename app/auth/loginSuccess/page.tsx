@@ -1,6 +1,7 @@
 "use client";
 import { apiManager } from "@/lib/api/api";
-import ky from "ky";
+import { useAuthStore } from "@/store/auth-store";
+import { User } from "@/types/user";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import React, { useEffect } from "react";
@@ -8,13 +9,14 @@ import React, { useEffect } from "react";
 interface TokenResponse {
   accessToken: string;
   refreshToken: string;
-  user: any;
+  user: User;
 }
 
 const Page = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const code = searchParams.get("code");
+  const { setUser } = useAuthStore();
 
   useEffect(() => {
     const exchangeCode = async () => {
@@ -31,14 +33,14 @@ const Page = () => {
         });
 
         if (response.ok) {
-          const data: Record<string, any> = await response.json();
+          const data: TokenResponse = await response.json();
 
           //토큰 저장
           localStorage.setItem("accessToken", data.accessToken);
           localStorage.setItem("refreshToken", data.refreshToken);
           localStorage.setItem("user", JSON.stringify(data.user));
 
-          console.log(data);
+          setUser(data.user);
 
           router.push("/home");
         } else {

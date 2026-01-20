@@ -1,12 +1,18 @@
-import React from "react";
+"use client";
+
 import LogoIcon from "../logo-icon";
+import { useAuthStore } from "@/store/auth-store";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 
 const TopNav = () => {
+  const { user, isLoading } = useAuthStore();
   return (
     <div className="flex items-center justify-between bg-(--surface) border-2 border-(--border) rounded-(--rounded-md) p-3  my-6">
-      <UserLabInfo />
+      <div>{user?.userType !== "GUEST" && user?.labId && <UserLabInfo />}</div>
+
       <div>
-        <LogoIcon str="이" size={9} />
+        {/* <LogoIcon str={user?.nickname[0] || ""} size={9} /> */}
+        <Profile />
       </div>
     </div>
   );
@@ -27,5 +33,15 @@ const UserLabInfo = () => {
 };
 
 const Profile = () => {
-  return <div></div>;
+  const { user } = useAuthStore();
+  return (
+    <Popover>
+      <PopoverTrigger>
+        <LogoIcon str={user?.nickname[0] || ""} size={9} />
+      </PopoverTrigger>
+      <PopoverContent>
+        <div>설정</div>
+      </PopoverContent>
+    </Popover>
+  );
 };

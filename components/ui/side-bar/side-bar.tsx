@@ -1,55 +1,22 @@
+"use client";
 import React from "react";
 import SideBarTab from "./side-bar-tab";
-
-interface MenuItem {
-  title: string;
-  icon: string;
-  url: string;
-  groupName?: string;
-}
-
-const menuItems: MenuItem[] = [
-  {
-    title: "홈",
-    icon: "streamline-ultimate-color:space-astronaut",
-    url: "/home",
-    groupName: "메인",
-  },
-  // {
-  //   title: "대시보드",
-  //   icon: "fluent-color:chart-multiple-16",
-  //   url: "/dashboard",
-  //   groupName: "연구실",
-  // },
-  {
-    title: "프로젝트",
-    icon: "flat-color-icons:folder",
-    url: "/projects",
-    groupName: "연구실",
-  },
-  // {
-  //   title: "논문",
-  //   icon: "vaadin:newspaper",
-  //   url: "/papers",
-  // },
-  {
-    title: "멤버",
-    icon: "fluent-color:people-16",
-    url: "/members",
-  },
-  {
-    title: "설정",
-    icon: "fluent-color:settings-16",
-    url: "/settings",
-  },
-];
+import { useAuthStore } from "@/store/auth-store";
+import { menuItems } from "@/lib/config/menu-items";
 
 const SideBar = () => {
+  const { user } = useAuthStore();
+
+  const filterMenuItems = menuItems.filter((item) => {
+    if (!item.canAccess) return true;
+    return item.canAccess(user);
+  });
+
   return (
     <div className="flex flex-col w-[280px] h-full border-r-2 border-(--border) bg-(--surface)">
       <Logo />
       <div className="flex flex-col py-5 px-3 gap-1">
-        {menuItems.map((item, index) => (
+        {filterMenuItems.map((item, index) => (
           <React.Fragment key={index}>
             {item.groupName && index !== 0 && (
               <div className="h-px bg-(--border) my-4 mx-3" />

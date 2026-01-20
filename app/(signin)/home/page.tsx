@@ -249,3 +249,89 @@ const LabCard = ({ name, school, professor, img }: LabCardProps) => {
     </div>
   );
 };
+
+const Test = () => {
+  return (
+    <div>
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+      <div>
+        <div>
+          <div>블로거명</div>
+          <div>날짜</div>
+        </div>
+        <div>
+          <div>제목</div>
+          <div>내용</div>
+        </div>
+        <div>이미지</div>
+      </div>
+    </div>
+  );
+};
