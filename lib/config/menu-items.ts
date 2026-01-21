@@ -1,6 +1,7 @@
 import { MenuItem } from "@/types/user-menu";
 import { MenuPermission } from "../utills/permissions";
 
+//사이드 바 메뉴
 export const menuItems: MenuItem[] = [
   {
     title: "홈",

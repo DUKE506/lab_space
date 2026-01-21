@@ -12,7 +12,10 @@
   --secondary: #1e40af;
   --light: #eff6ff;
   --accent: #3b82f6;
-  --hover: #eff6ff;
+  --primary-hover: #eff6ff;
+
+  --hover-light: #f9fafb;
+  --hover: #f3f4f6;
 
   --text-primary: #1e293b;
   --text-secondary: #64748b;
@@ -20,12 +23,14 @@
 
   --border: #e2e8f0;
 
+  --success-light: #14e069;
   --success: #10b981;
   --success-bg: #d1fae5;
 
   --error: #ef4444;
   --error-bg: #fee2e2;
 
+  --warning-dark: #f77408;
   --warning: #f59e0b;
   --warning-bg: #fef3c7;
   --rounded-xs: 0.125rem;

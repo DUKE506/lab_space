@@ -2,6 +2,9 @@ export interface User {
   id: number;
   email: string;
   nickname: string; //카카오 닉네임
+  phone: string | null;
+  university: string | null;
+  department: string | null;
   userType: UserType;
   isProfileCompleted: boolean; // 프로필 완성도
   labId: number | null; // 소속 연구실 추후 생성 예정

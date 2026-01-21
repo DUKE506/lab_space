@@ -8,8 +8,8 @@ export const Input = ({ className, ...props }: InputProps) => {
   return (
     <input
       className={cn(
-        "p-2 border border-(--border) rounded-(--rounded-md) focus:outline-(--primary)",
-        className
+        "p-2 border border-(--border) rounded-sm focus:outline-(--primary)",
+        className,
       )}
       {...props}
     />
