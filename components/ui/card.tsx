@@ -11,7 +11,7 @@ const Card = ({
   return (
     <div
       className={cn(
-        "bg-(--surface) border-2 border-(--border) rounded-(--rounded-md) p-6",
+        "bg-(--surface) border-1 border-(--border) rounded-(--rounded-md) p-6",
         className,
       )}
     >

@@ -15,7 +15,7 @@ const Contents = () => {
         </Card>
       );
     default:
-      return <div>Contents</div>;
+      return <div className="flex-2/3">Contents</div>;
   }
 };
 

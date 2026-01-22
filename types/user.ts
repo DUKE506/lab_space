@@ -29,3 +29,11 @@ export interface LoginResponse {
   refreshToken: string;
   user: User;
 }
+
+export interface AdditionalUserDto {
+  id: number;
+  phone: string;
+  university: string;
+  department: string;
+  userType: UserType;
+}

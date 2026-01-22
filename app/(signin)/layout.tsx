@@ -1,7 +1,7 @@
 import ContentsLayout from "@/components/layout/contents-layout";
+import { ScrollableLayout } from "@/components/ui/scroll-top";
 import SideBar from "@/components/ui/side-bar/side-bar";
 import TopNav from "@/components/ui/top-nav/top-nav";
-import React from "react";
 
 export default function UserLayout({
   children,
@@ -11,10 +11,10 @@ export default function UserLayout({
   return (
     <div className="w-full h-full flex">
       <SideBar />
-      <div className="flex flex-col bg-background w-full px-8 overflow-y-auto">
+      <ScrollableLayout>
         <TopNav />
         <ContentsLayout>{children}</ContentsLayout>
-      </div>
+      </ScrollableLayout>
     </div>
   );
 }

@@ -7,7 +7,12 @@ import { User } from "@/types/user";
 export const MenuPermission = {
   requiresLab: (user: User | null): boolean => {
     if (!user) return false;
-    return user.userType !== "GUEST" && user.labId !== null;
+
+    return (
+      user.userType !== "GUEST" &&
+      user.labId !== null &&
+      user.labId !== undefined
+    );
   },
 
   //관리자 전용

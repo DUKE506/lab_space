@@ -2,6 +2,7 @@ import Card from "@/components/ui/card";
 import { useAuthStore } from "@/store/auth-store";
 import {
   BriefcaseBusiness,
+  CircleCheckIcon,
   CircleXIcon,
   IconNode,
   MailIcon,
@@ -46,6 +47,11 @@ const ProfileDetail = () => {
             title="학과"
             name={user?.department || "내용없음"}
           />
+          <Divider />
+          <div className="flex items-center gap-2 text-(--success)">
+            <CircleCheckIcon />
+            <span>추가 정보</span>
+          </div>
         </>
       ) : (
         <div className="flex items-center gap-2 text-(--error)">

@@ -1,6 +1,11 @@
 import { useAuthStore } from "@/store/auth-store";
 import { UserType } from "@/types/user";
-import { ImageIcon, UserIcon } from "lucide-react";
+import {
+  GraduationCapIcon,
+  ImageIcon,
+  LandmarkIcon,
+  UserIcon,
+} from "lucide-react";
 import React from "react";
 
 export const ProfileInfo = () => {
@@ -14,7 +19,7 @@ export const ProfileInfo = () => {
         <span className="text-4xl font-bold text-(--text-primary) ">
           {user?.nickname}
         </span>
-        <div className="flex items-center gap-2 text-gray-700">
+        <div className="flex items-center gap-2 text-gray-700 h-full">
           <UserTypeBadge type={user?.userType || "GUEST"} />
           <span className="text-lg">{user?.email}</span>
         </div>
@@ -34,13 +39,15 @@ const UserTypeBadge = ({ type }: { type: UserType }) => {
       );
     case "STUDENT":
       return (
-        <div className="w-fit border border-(--success) bg-(--success-bg) font-semibold rounded-(--rounded-sm) px-4 h-full flex items-center text-(--success) text-xs">
-          <span>연구원</span>
+        <div className="flex justify-center items-center gap-2 px-8 py-1 bg-(--success-bg) border border-(--success) rounded-sm text-(--success)">
+          <GraduationCapIcon strokeWidth={1.5} size={20} />
+          <span>학생</span>
         </div>
       );
     case "PROFESSOR":
       return (
-        <div className="w-fit border border-(--primary) bg-(--primary-bg) font-semibold rounded-(--rounded-sm) px-4 h-full flex items-center text-(--primary) text-xs">
+        <div className="flex justify-center items-center gap-2 px-8 py-1 bg-(--surface) border border-(--primary) rounded-sm text-(--primary)">
+          <LandmarkIcon strokeWidth={1.5} size={20} />
           <span>교수</span>
         </div>
       );

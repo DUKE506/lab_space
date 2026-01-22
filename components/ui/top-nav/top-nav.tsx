@@ -10,15 +10,20 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const TopNav = () => {
   const { user, isLoading } = useAuthStore();
+
   return (
     <div className="flex items-center justify-between bg-(--surface) border-2 border-(--border) rounded-(--rounded-md) p-3  my-6">
       <div className="h-full">
-        {user?.userType !== "GUEST" || user?.labId ? (
+        {user?.userType !== "GUEST" &&
+        user?.labId === null &&
+        user?.labId === undefined ? (
           <UserLabInfo />
         ) : (
-          <div className="border border-(--warning) bg-(--warning-bg) font-semibold rounded-(--rounded-sm) px-4 h-full flex items-center text-(--warning) text-xs">
-            <span>연구실에 가입해보세요!</span>
-          </div>
+          <Link href={"/my"}>
+            <div className="border border-(--warning) bg-(--warning-bg) font-semibold rounded-(--rounded-sm) px-4 h-full flex items-center text-(--warning) text-xs cursor-pointer">
+              <span>연구실에 가입해보세요!</span>
+            </div>
+          </Link>
         )}
       </div>
 
