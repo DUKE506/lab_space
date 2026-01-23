@@ -3,6 +3,9 @@ import { FileInput } from "@/components/ui/file-input";
 import { FormFileInput } from "@/components/ui/form/file";
 import { FormInput } from "@/components/ui/form/input";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { objectToFormData } from "@/lib/utills/convert-formdata";
+import { useLabStore } from "@/store/lab-store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import React from "react";
@@ -15,6 +18,7 @@ const Schema = z.object({
 });
 
 const LabCreateForm = () => {
+  const { createLab } = useLabStore();
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
     defaultValues: {
@@ -23,16 +27,17 @@ const LabCreateForm = () => {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof Schema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof Schema>) => {
+    const formData = objectToFormData(values);
+    await createLab(formData);
   };
 
   return (
     <form
       onSubmit={form.handleSubmit(onSubmit)}
-      className="flex flex-col gap-6 h-full"
+      className="flex flex-col gap-6 h-full flex-1 min-h-0"
     >
-      <div className="flex-1 flex flex-col gap-6">
+      <div className="flex flex-col gap-6 px-6 min-h-0 overflow-y-auto pb-2">
         <FormInput
           label="연구실명"
           placeholder="연구실명"
@@ -64,9 +69,12 @@ const LabCreateForm = () => {
           )}
         />
       </div>
-      <button type="submit" className="bg-(--primary) text-white ">
-        신청
-      </button>
+
+      <div className="shrink-0 w-full px-6">
+        <button type="submit" className="w-full bg-(--primary) text-white  ">
+          신청
+        </button>
+      </div>
     </form>
   );
 };

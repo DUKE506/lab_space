@@ -7,6 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
+import { ScrollArea } from "./scroll-area";
 
 interface BaseDialogProps {
   title: string;
@@ -37,11 +38,11 @@ const BaseDialog = ({
     <Dialog>
       <DialogTrigger>{trigger}</DialogTrigger>
       <DialogContent
-        className="w-150 h-150"
+        className="w-150 xl:max-h-[80vh] overflow-hidden "
         onInteractOutside={handleInteractOutside}
         onEscapeKeyDown={handleEscapeKeyDown}
       >
-        <DialogHeader>
+        <DialogHeader className="px-6">
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription className="sr-only"></DialogDescription>
         </DialogHeader>
