@@ -10,11 +10,18 @@ import { LabCardProps, labMockData } from "@/lib/config/lab-items";
 import { useAuthStore } from "@/store/auth-store";
 import { PlusIcon } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import LabCreateForm from "./components/lab-create-form";
+import { useLabStore } from "@/store/useLabStore";
 
 const page = () => {
   const { user } = useAuthStore();
+  const { labs, getLabs } = useLabStore();
+
+  useEffect(() => {
+    getLabs();
+  }, []);
+
   return (
     <>
       <div className="flex justify-between items-center">
@@ -39,13 +46,12 @@ const page = () => {
       </div>
 
       <div className=" rounded-(--rounded-md) grid grid-cols-5 gap-x-6 gap-y-8 ">
-        {labMockData.map((v, i) => (
+        {labs.map((lab, index) => (
           <LabCard
-            key={i}
-            name={v.name}
-            school={v.school}
-            professor={v.professor}
-            img={v.img}
+            key={index}
+            name={lab.name}
+            school={"동서대학교"}
+            professor={"최봉준"}
           />
         ))}
       </div>
@@ -78,92 +84,6 @@ const LabCard = ({ name, school, professor, img }: LabCardProps) => {
           <CardIconText icon="noto:school" str={school} />
           <CardIconText icon="noto:graduation-cap" str={`${professor} 교수`} />
         </div>
-      </div>
-    </div>
-  );
-};
-
-const Test = () => {
-  return (
-    <div>
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
-      </div>
-      <div>
-        <div>
-          <div>블로거명</div>
-          <div>날짜</div>
-        </div>
-        <div>
-          <div>제목</div>
-          <div>내용</div>
-        </div>
-        <div>이미지</div>
       </div>
     </div>
   );

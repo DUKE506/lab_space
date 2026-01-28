@@ -5,7 +5,7 @@ import { FormInput } from "@/components/ui/form/input";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { objectToFormData } from "@/lib/utills/convert-formdata";
-import { useLabStore } from "@/store/lab-store";
+import { useLabStore } from "@/store/useLabStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import React from "react";
