@@ -1,4 +1,5 @@
 import { FormErrorMessage } from "@/components/features/user/profile-additional-form";
+import Button from "@/components/ui/button";
 import { FileInput } from "@/components/ui/file-input";
 import { FormFileInput } from "@/components/ui/form/file";
 import { FormInput } from "@/components/ui/form/input";
@@ -17,7 +18,11 @@ const Schema = z.object({
   files: z.array(z.instanceof(File)),
 });
 
-const LabCreateForm = () => {
+interface LabCreateFormProps {
+  onClose: () => void;
+}
+
+const LabCreateForm = ({ onClose }: LabCreateFormProps) => {
   const { createLab } = useLabStore();
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
@@ -30,6 +35,7 @@ const LabCreateForm = () => {
   const onSubmit = async (values: z.infer<typeof Schema>) => {
     const formData = objectToFormData(values);
     await createLab(formData);
+    onClose();
   };
 
   return (
@@ -47,7 +53,7 @@ const LabCreateForm = () => {
           error={form.formState.errors.name}
           required
         />
-        {/* <FormFileInput label="증빙자료" /> */}
+
         <Controller
           name="files"
           control={form.control}
@@ -71,9 +77,7 @@ const LabCreateForm = () => {
       </div>
 
       <div className="shrink-0 w-full px-6">
-        <button type="submit" className="w-full bg-(--primary) text-white  ">
-          신청
-        </button>
+        <Button label="신청" />
       </div>
     </form>
   );

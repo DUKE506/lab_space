@@ -2,6 +2,7 @@ import { apiManager } from "@/lib/api/api";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { Lab } from "../types/lab/lab";
+import { toast } from "sonner";
 
 interface LabState {
   isLoading: boolean;
@@ -35,9 +36,11 @@ export const useLabStore = create<LabState>()(
               body: formData,
             });
             console.log(res);
+            toast.success("신청되었습니다.");
             set({ isLoading: false });
           } catch (error) {
             console.log(error);
+            toast.error("신청 중 문제가 발생하였습니다.");
             set({ isLoading: false });
           }
         },

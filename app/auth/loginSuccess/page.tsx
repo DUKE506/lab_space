@@ -25,6 +25,10 @@ const Page = () => {
         return;
       }
 
+      /**
+       * 카카오로그인 -> return Code
+       * Code -> Token 요청
+       */
       try {
         const response = await apiManager.post(`auth/token`, {
           json: {
@@ -39,6 +43,21 @@ const Page = () => {
           localStorage.setItem("accessToken", data.accessToken);
           localStorage.setItem("refreshToken", data.refreshToken);
           localStorage.setItem("user", JSON.stringify(data.user));
+
+          apiManager.extend({
+            hooks: {
+              beforeRequest: [
+                (request, options, { retryCount }) => {
+                  if (retryCount === 0) {
+                    request.headers.set(
+                      "Authorization",
+                      `Bearer ${data.accessToken}`,
+                    );
+                  }
+                },
+              ],
+            },
+          });
 
           setUser(data.user);
 

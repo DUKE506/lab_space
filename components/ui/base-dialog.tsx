@@ -14,6 +14,8 @@ interface BaseDialogProps {
   trigger: React.ReactNode;
   children: React.ReactNode;
   preventClose?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const BaseDialog = ({
@@ -21,6 +23,8 @@ const BaseDialog = ({
   trigger,
   children,
   preventClose = false,
+  open,
+  onOpenChange,
 }: BaseDialogProps) => {
   const handleInteractOutside = (e: Event) => {
     if (preventClose) {
@@ -35,7 +39,7 @@ const BaseDialog = ({
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger>{trigger}</DialogTrigger>
       <DialogContent
         className="w-150 xl:max-h-[80vh] overflow-hidden "

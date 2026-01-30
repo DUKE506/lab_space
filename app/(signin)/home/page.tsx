@@ -13,10 +13,12 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import LabCreateForm from "./components/lab-create-form";
 import { useLabStore } from "@/store/useLabStore";
+import Button from "@/components/ui/button";
 
 const page = () => {
   const { user } = useAuthStore();
-  const { labs, getLabs } = useLabStore();
+  const { labs, getLabs, isLoading } = useLabStore();
+  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     getLabs();
@@ -33,27 +35,30 @@ const page = () => {
           <BaseDialog
             title="연구실 생성"
             trigger={
-              <div className="flex items-center gap-2 bg-(--primary) text-white border border-(--border) rounded-sm p-2 cursor-pointer hover:bg-(--secondary)">
+              <div className="flex items-center gap-2 bg-(--primary) text-white border border-(--border) rounded-sm py-2 px-4 cursor-pointer hover:bg-(--secondary)">
                 <PlusIcon size={20} />
                 <span className="text-sm font-bold">연구실 생성</span>
               </div>
             }
+            open={open}
+            onOpenChange={setOpen}
             preventClose
           >
-            <LabCreateForm />
+            <LabCreateForm onClose={() => setOpen(false)} />
           </BaseDialog>
         )}
       </div>
 
       <div className=" rounded-(--rounded-md) grid grid-cols-5 gap-x-6 gap-y-8 ">
-        {labs.map((lab, index) => (
-          <LabCard
-            key={index}
-            name={lab.name}
-            school={"동서대학교"}
-            professor={"최봉준"}
-          />
-        ))}
+        {!isLoading &&
+          labs.map((lab, index) => (
+            <LabCard
+              key={index}
+              name={lab.name}
+              school={"동서대학교"}
+              professor={"최봉준"}
+            />
+          ))}
       </div>
     </>
   );
