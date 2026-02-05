@@ -15,7 +15,8 @@
   --primary-hover: #eff6ff;
 
   --hover-light: #f9fafb;
-  --hover: #f3f4f6;
+  /* --hover: #f3f4f6; */
+  --hover: #f8f9fa;
 
   --text-primary: #1e293b;
   --text-secondary: #64748b;
