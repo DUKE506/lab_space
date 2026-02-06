@@ -14,6 +14,7 @@ import React, { useEffect } from "react";
 import LabCreateForm from "./components/lab-create-form";
 import { useLabStore } from "@/store/useLabStore";
 import Button from "@/components/ui/button";
+import SearchFilter from "@/components/ui/filter/search";
 
 const page = () => {
   const { user } = useAuthStore();
@@ -48,7 +49,7 @@ const page = () => {
           </BaseDialog>
         )}
       </div>
-
+      <SearchFilter />
       <div className=" rounded-(--rounded-md) grid grid-cols-5 gap-x-6 gap-y-8 ">
         {!isLoading &&
           labs.map((lab, index) => (

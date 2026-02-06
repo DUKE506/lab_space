@@ -12,11 +12,12 @@ export default function UserLayout({
   return (
     <div className="w-full h-full flex">
       <AppBar />
-
-      <ScrollableLayout>
+      {children}
+      {/* <ScrollableLayout>
         <TopNav />
-        <ContentsLayout>{children}</ContentsLayout>
-      </ScrollableLayout>
+        
+        <ContentsLayout></ContentsLayout>
+      </ScrollableLayout> */}
     </div>
   );
 }

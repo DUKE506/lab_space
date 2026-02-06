@@ -1,18 +1,32 @@
 "use client";
+import { useUserStore } from "@/store/user-store";
 import { PlusIcon, PowerIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import React from "react";
+import React, { useEffect } from "react";
+
+const LABICON = ["🧬", "🤖", "🛻", "💾", "💿", "📷", "🪙"];
 
 const AppBar = () => {
+  const { getUserLabs, userLabs, isLoading } = useUserStore();
+  useEffect(() => {
+    getUserLabs();
+  }, []);
+
   return (
     <div className="flex flex-col items-center gap-12 bg-[#18181b] px-2 py-4">
       <LabItem icon="🏠" link="/home" />
       {/* 연구실 */}
       <div className="flex-1 flex flex-col gap-4">
-        <LabItem icon="🧬" link="/lab/bio" />
-        <LabItem icon="🤖" link="/lab/ai" />
+        {userLabs.map((v, i) => (
+          <LabItem
+            key={i}
+            icon={LABICON[Math.floor(Math.random() * LABICON.length)]}
+            link={`/lab/${v.id}`}
+          />
+        ))}
+
         {/* 추가버튼 */}
         <LabItem
           icon={

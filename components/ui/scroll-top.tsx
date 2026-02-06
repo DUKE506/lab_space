@@ -16,7 +16,7 @@ export function ScrollableLayout({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={scrollRef}
-      className="flex flex-col bg-background w-full px-8 overflow-y-auto"
+      className="flex flex-col bg-background w-full overflow-y-auto"
     >
       {children}
     </div>

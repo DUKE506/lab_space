@@ -1,0 +1,14 @@
+import ContentsLayout from "@/components/layout/contents-layout";
+import { ScrollableLayout } from "@/components/ui/scroll-top";
+import SideBar from "@/components/ui/side-bar/side-bar";
+
+export default function LabLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="w-full h-full flex">
+      <SideBar />
+      <ScrollableLayout>
+        <ContentsLayout>{children}</ContentsLayout>
+      </ScrollableLayout>
+    </div>
+  );
+}

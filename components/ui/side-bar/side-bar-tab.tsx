@@ -1,7 +1,7 @@
 "use client";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 interface SideBarTabProps {
   icon: string;
@@ -11,11 +11,13 @@ interface SideBarTabProps {
 }
 
 const SideBarTab = ({ icon, title, url, groupName }: SideBarTabProps) => {
+  const { labid } = useParams();
+
   const pathName = usePathname();
   const isActive = pathName.includes(url);
 
   return (
-    <Link href={url}>
+    <Link href={`/lab/${labid}${url}`}>
       <div className={`flex flex-col gap-2 `}>
         {groupName && (
           <span className="text-sm text-(--text-light) ml-3">{groupName}</span>

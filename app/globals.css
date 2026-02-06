@@ -5,17 +5,22 @@
 
 :root {
   /*기본 테마 색상*/
-  --background: #f8fafc;
+  --background: #f9fafb;
   --surface: #ffffff;
 
-  --primary: #2563eb;
-  --secondary: #1e40af;
+  --primary: #0d9488;
+  --primary-light: #ccfbf1;
+  --primary-dark: #0f766e;
+
+  --secondary: #fb923c;
+  --secondary-light: #ffedd5;
+  --secondary-dark: #ea580c;
+
   --light: #eff6ff;
   --accent: #3b82f6;
   --primary-hover: #eff6ff;
 
   --hover-light: #f9fafb;
-  /* --hover: #f3f4f6; */
   --hover: #f8f9fa;
 
   --text-primary: #1e293b;

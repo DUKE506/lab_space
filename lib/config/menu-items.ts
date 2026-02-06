@@ -3,18 +3,17 @@ import { MenuPermission } from "../utills/permissions";
 
 //사이드 바 메뉴
 export const menuItems: MenuItem[] = [
-  {
-    title: "홈",
-    icon: "streamline-ultimate-color:space-astronaut",
-    url: "/home",
-    groupName: "메인",
-    canAccess: MenuPermission.requiresAuth,
-  },
+  // {
+  //   title: "홈",
+  //   icon: "streamline-ultimate-color:space-astronaut",
+  //   url: "/home",
+  //   groupName: "메인",
+  //   canAccess: MenuPermission.requiresAuth,
+  // },
   {
     title: "프로젝트",
     icon: "flat-color-icons:folder",
     url: "/projects",
-    groupName: "연구실",
     canAccess: MenuPermission.requiresLab,
   },
   {

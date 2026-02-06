@@ -16,10 +16,10 @@ export const Input = ({ className, ...props }: InputProps) => {
   );
 };
 
-export const SearchInput = () => {
+export const SearchInput = ({ ...props }: InputProps) => {
   return (
     <div className="relative">
-      <Input className="pl-10 pr-2 py-2" placeholder="Search" />
+      <Input className="pl-10 pr-2 py-2 bg-(--surface)" {...props} />
       <Icon
         icon="material-symbols:search"
         width={24}

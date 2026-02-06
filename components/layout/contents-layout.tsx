@@ -5,5 +5,7 @@ export default function ContentsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="h-auto py-8 flex flex-col gap-12">{children}</div>;
+  return (
+    <div className="h-auto py-8 flex flex-col gap-12 px-12 ">{children}</div>
+  );
 }

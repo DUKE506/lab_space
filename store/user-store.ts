@@ -3,10 +3,14 @@ import { AdditionalUserDto, User } from "@/types/user";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { useAuthStore } from "./auth-store";
+import { UserLabsDto } from "@/types/user/user-labs";
 
 interface UserState {
   user: User | null;
   getUser: () => Promise<void>;
+  userLabs: UserLabsDto[];
+  isLoading: boolean;
+  getUserLabs: () => Promise<void>;
   additionalUserProfile: (
     additionalUserDto: AdditionalUserDto,
   ) => Promise<User | undefined>;
@@ -25,6 +29,20 @@ export const useUserStore = create<UserState>()(
             console.log(err);
           }
         },
+        userLabs: [],
+        getUserLabs: async () => {
+          set({ isLoading: true });
+          try {
+            const res: UserLabsDto[] = await apiManager
+              .get("users/findLabs")
+              .json();
+            set({ isLoading: false, userLabs: res });
+          } catch (err) {
+            console.error(err);
+            set({ isLoading: false });
+          }
+        },
+        isLoading: false,
         additionalUserProfile: async (user) => {
           try {
             console.log(user);

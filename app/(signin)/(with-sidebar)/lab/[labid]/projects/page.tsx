@@ -1,3 +1,4 @@
+import SearchFilter from "@/components/ui/filter/search";
 import { Input, SearchInput } from "@/components/ui/input";
 import { CardIconText, PageDescription, PageTitle } from "@/components/ui/text";
 import { Icon } from "@iconify/react";
@@ -255,8 +256,11 @@ const ProjectCard = ({
 
 const Filter = () => {
   return (
-    <div className="bg-(--surface) border border-(--border) rounded-(--rounded-md) p-2 px-6 py-4 ">
-      <SearchInput />
-    </div>
+    <>
+      <SearchFilter />
+    </>
+    // <div className="bg-(--surface) border border-(--border) rounded-(--rounded-md) p-2 px-6 py-4 ">
+    //   <SearchInput />
+    // </div>
   );
 };

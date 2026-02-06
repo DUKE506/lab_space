@@ -1,0 +1,8 @@
+export const LabRole = {
+  PROFESSOR: "PROFESSOR",
+  MANAGER: "MANAGER",
+  UNDERGRADUATE_RESEARCHER: "UNDERGRADUATE_RESEARCHER",
+  GRADUATE_RESEARCHER: "GRADUATE_RESEARCHER",
+};
+
+export type LabRole = (typeof LabRole)[keyof typeof LabRole];

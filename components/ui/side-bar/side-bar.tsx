@@ -13,7 +13,7 @@ const SideBar = () => {
   });
 
   return (
-    <div className="flex flex-col w-[280px] h-full border-r-2 border-(--border) bg-(--surface)">
+    <div className="flex flex-col w-[280px] h-full border-r-2 border-(--border) bg-(--surface) shrink-0">
       <Logo />
       <div className="flex flex-col py-5 px-3 gap-1">
         {filterMenuItems.map((item, index) => (

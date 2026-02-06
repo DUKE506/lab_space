@@ -8,11 +8,7 @@ export const MenuPermission = {
   requiresLab: (user: User | null): boolean => {
     if (!user) return false;
 
-    return (
-      user.userType !== "GUEST" &&
-      user.labId !== null &&
-      user.labId !== undefined
-    );
+    return user.userType !== "GUEST";
   },
 
   //관리자 전용
