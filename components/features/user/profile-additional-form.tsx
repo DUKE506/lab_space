@@ -148,7 +148,7 @@ const ProfileAdditionalForm = () => {
             <span className="text-(--error)">*</span>
           </div>
           <UserTypeSelect
-            values={form.watch()}
+            values={form.watch("userType")}
             onChange={(value) =>
               form.setValue("userType", value, { shouldDirty: true })
             }
@@ -178,49 +178,60 @@ const ProfileAdditionalForm = () => {
 
 export default ProfileAdditionalForm;
 
-const UserTypeSelect = ({
+export const UserTypeSelect = ({
   values,
   onChange,
+  isVertical = false,
 }: {
-  values: z.infer<typeof Schema>;
+  values: "STUDENT" | "PROFESSOR";
   onChange: (value: "STUDENT" | "PROFESSOR") => void;
+  isVertical?: boolean;
 }) => {
   return (
-    <div className="flex gap-4">
-      <div
+    <div className={`flex ${isVertical ? "flex-col" : "flex-row"} gap-4`}>
+      <button
+        type="button"
         onClick={() => onChange("STUDENT")}
         className={`flex-1 flex flex-col  gap-2 border border-(--border) px-4 py-2  rounded-sm cursor-pointer 
-        ${values.userType === "STUDENT" ? "border-(--primary) bg-(--primary-hover)" : ""} 
-        ${values.userType === "STUDENT" ? "text-(--primary)" : "text-(--text-secondary)"} `}
+        ${values === "STUDENT" ? "border-(--primary) bg-(--primary-hover)" : ""} 
+        ${values === "STUDENT" ? "text-(--primary)" : "text-(--text-secondary)"} `}
       >
         <div
-          className={`flex items-center gap-4  ${values.userType === "STUDENT" ? "font-bold" : ""} `}
+          className={`flex items-center gap-4  ${values === "STUDENT" ? "font-bold" : ""} `}
         >
           <GraduationCapIcon strokeWidth={1} />
           <span>학생</span>
         </div>
-        <span className={`text-sm `}>연구실에 가입하여 활동해보세요!</span>
-      </div>
-      <div
+        <span className={`text-sm text-start `}>
+          연구실에 가입하여 활동해보세요!
+        </span>
+      </button>
+      <button
+        type="button"
         onClick={() => onChange("PROFESSOR")}
         className={`flex-1 flex flex-col  gap-2 border border-(--border) px-4 py-2  rounded-sm cursor-pointer 
-        ${values.userType === "PROFESSOR" ? "border-(--primary) bg-(--primary-hover)" : ""} 
-        ${values.userType === "PROFESSOR" ? "text-(--primary)" : "text-(--text-secondary)"} `}
+        ${values === "PROFESSOR" ? "border-(--primary) bg-(--primary-hover)" : ""} 
+        ${values === "PROFESSOR" ? "text-(--primary)" : "text-(--text-secondary)"} `}
       >
         <div
-          className={`flex items-center gap-4  ${values.userType === "PROFESSOR" ? "font-bold" : ""} `}
+          className={`flex items-center gap-4  ${values === "PROFESSOR" ? "font-bold" : ""} `}
         >
           <LandmarkIcon strokeWidth={1} />
           <span>교수</span>
         </div>
-        <span className={`text-sm`}>
+        <span className={`text-sm text-start`}>
           연구실을 관리하고 학생들의 활동을 지원해보세요!
         </span>
-      </div>
+      </button>
     </div>
   );
 };
 
-export const FormErrorMessage = ({ message }: { message: string }) => {
+export const FormErrorMessage = ({
+  message,
+}: {
+  message: string | undefined;
+}) => {
+  if (message === undefined) return null;
   return <span className="text-(--error) text-xs">{message}</span>;
 };

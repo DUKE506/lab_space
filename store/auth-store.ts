@@ -10,6 +10,7 @@ interface AuthState {
   error: string | null;
 
   signIn: (data: LoginDto) => Promise<void>;
+  signUp: (data: SignUpRequestDto) => Promise<void>;
   signOut: () => Promise<void>;
   setUser: (user: User) => void;
 }
@@ -36,6 +37,19 @@ export const useAuthStore = create<AuthState>()(
           } catch (error) {
             console.log(error);
             set({ isLoading: false });
+          }
+        },
+        signUp: async (data) => {
+          try {
+            const res = await apiManager
+              .post("auth/signup", {
+                json: data,
+              })
+              .json();
+
+            console.log(res);
+          } catch (err) {
+            console.error(err);
           }
         },
         signOut: async () => {},

@@ -42,11 +42,11 @@ const BaseDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger>{trigger}</DialogTrigger>
       <DialogContent
-        className="w-150 xl:max-h-[80vh] overflow-hidden "
+        className="w-full h-full xl:w-150 xl:max-h-[80vh] overflow-hidden pb-0 "
         onInteractOutside={handleInteractOutside}
         onEscapeKeyDown={handleEscapeKeyDown}
       >
-        <DialogHeader className="px-6">
+        <DialogHeader className="px-6 pb-4">
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription className="sr-only"></DialogDescription>
         </DialogHeader>
