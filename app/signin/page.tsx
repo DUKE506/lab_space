@@ -11,8 +11,8 @@ export default function SignInPage() {
   return (
     <div className="flex justify-center items-center h-full px-12 relative">
       <HomeButton />
-      <div className="flex flex-col  gap-12 w-150 p-12 border border-(--border) ">
-        <span className="text-4xl">SIGN IN</span>
+      <div className="flex flex-col  gap-12 w-150 p-12 border border-(--border) bg-(--surface)">
+        <span className="text-4xl">로그인</span>
         <LoginForm />
         <BaseDialog
           title="회원가입"
@@ -26,8 +26,9 @@ export default function SignInPage() {
           }
           open={open}
           onOpenChange={(open) => setOpen(open)}
+          preventClose
         >
-          <SignUpForm />
+          <SignUpForm onClose={() => setOpen(false)} />
         </BaseDialog>
       </div>
     </div>

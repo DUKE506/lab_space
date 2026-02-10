@@ -38,7 +38,7 @@ const Schema = z
     path: ["passwordCheck"],
   });
 
-const SignUpForm = () => {
+const SignUpForm = ({ onClose }: { onClose: () => void }) => {
   const { signUp } = useAuthStore();
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
@@ -55,7 +55,6 @@ const SignUpForm = () => {
   });
 
   const handleSubmit = async (values: z.infer<typeof Schema>) => {
-    console.log(values);
     const dto: SignUpRequestDto = {
       name: values.name,
       email: values.email,
@@ -65,7 +64,8 @@ const SignUpForm = () => {
       department: values.department,
       userType: values.userType,
     };
-    await signUp(dto);
+    const res = await signUp(dto);
+    if (res) onClose();
   };
 
   return (
@@ -151,10 +151,10 @@ export default SignUpForm;
 interface FormInputTextProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   required?: boolean;
-  errorMessage: string | undefined;
+  errorMessage?: string | undefined;
 }
 
-const FormInputText = ({
+export const FormInputText = ({
   label,
   required = false,
   errorMessage,
@@ -174,7 +174,7 @@ const FormInputText = ({
   );
 };
 
-const FormInputPassword = ({
+export const FormInputPassword = ({
   label,
   required = false,
   errorMessage,

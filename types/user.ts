@@ -24,12 +24,6 @@ export interface LoginDto {
   password: string;
 }
 
-export interface LoginResponse {
-  accessToken: string;
-  refreshToken: string;
-  user: User;
-}
-
 export interface AdditionalUserDto {
   id: number;
   phone: string;

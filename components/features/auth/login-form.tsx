@@ -3,11 +3,16 @@ import { Input } from "@/components/ui/input";
 import { useAuthStore } from "@/store/auth-store";
 import { LoginDto } from "@/types/user";
 import { AuthError } from "next-auth";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KakaoLoginButton } from "./oauth-button";
+import {
+  FormInputPassword,
+  FormInputText,
+} from "@/app/signin/_form/signup-form";
+import Button from "@/components/ui/button";
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -15,6 +20,7 @@ const LoginSchema = z.object({
 });
 
 export default function LoginForm() {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<LoginDto>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -25,27 +31,26 @@ export default function LoginForm() {
   const { signIn } = useAuthStore();
 
   const onSubmit = async (values: LoginDto) => {
-    const data = await signIn(values);
+    const res = await signIn(values);
+    if (res) router.push("/home");
   };
   return (
     <form
       className="flex flex-col gap-6"
       onSubmit={handleSubmit(onSubmit, (err) => console.log(err))}
     >
-      <label className="flex flex-col gap-2">
-        Email
-        <Input id="email" {...register("email", { required: true })} />
-      </label>
-      <label className="flex flex-col gap-2">
-        Password
-        <Input id="password" {...register("password", { required: true })} />
-      </label>
-      <button
-        className=" w-full py-2 font-bold  border border-(--border) rounded-(--default-rounded) cursor-pointer hover:border-(--primary) hover:text-(--primary) "
-        type="submit"
-      >
-        sign in
-      </button>
+      <FormInputText
+        label="Email"
+        placeholder="email@spacelab.co.kr"
+        {...register("email", { required: true })}
+      />
+      <FormInputPassword
+        label="Password"
+        placeholder="password"
+        {...register("password", { required: true })}
+      />
+      <Button label="로그인" />
+
       <KakaoLoginButton />
     </form>
   );
