@@ -9,7 +9,8 @@ const ButtonVariant = cva(
   {
     variants: {
       variant: {
-        default: "bg-(--primary) text-white hover:bg-(--secondary)",
+        default: "bg-(--primary) text-white hover:bg-(--primary-dark)",
+        reject: "bg-(--error) text-white hover:bg-red-600",
       },
       size: {
         default: "w-full ",

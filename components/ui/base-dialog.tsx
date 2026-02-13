@@ -42,7 +42,7 @@ const BaseDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger>{trigger}</DialogTrigger>
       <DialogContent
-        className="w-full h-full xl:w-150 xl:max-h-[80vh] overflow-hidden pb-0 "
+        className="w-full  min-h-0 xl:w-150 xl:max-h-[80vh] overflow-hidden pb-0 "
         onInteractOutside={handleInteractOutside}
         onEscapeKeyDown={handleEscapeKeyDown}
       >
